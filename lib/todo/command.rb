@@ -4,6 +4,18 @@ module Todo
   # @author betahikaru
   class Command
 
+    # コマンドから実行するインタフェース
+    # @param [Array] argv
+    def self.run(argv)
+      new(argv).execute
+    end
+
+    # コンストラクタ
+    # @param [Array] argv
+    def initialize(argv)
+      @argv = argv
+    end
+
     # メイン処理
     def execute
       DB.prepare
