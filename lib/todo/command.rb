@@ -17,6 +17,14 @@ module Todo
       Task.create!(name: name, content: content).reload
     end
 
+    # タスクの削除
+    # @param [Integer] id
+    # @throws ActiveRecord::RecordNotFound
+    def delete_task(id)
+      task = Task.find(id)
+      task.destroy
+    end
+
   end
 
 end
