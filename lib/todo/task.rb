@@ -8,6 +8,8 @@ module Todo
   # @author betahikaru
   class Task < ActiveRecord::Base
 
+    scope :status_is, ->(status) { where(status: status) } # statusで検索
+
     NOT_YET = 0 # タスク未完了
     DONE    = 1 # タスク完了済
     PENDING = 2 # タスク保留状態
