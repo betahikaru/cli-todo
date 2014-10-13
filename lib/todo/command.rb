@@ -18,6 +18,8 @@ module Todo
 
     # メイン処理
     def execute
+      options  = Options.parse!(@argv)
+
       DB.prepare
     end
 
