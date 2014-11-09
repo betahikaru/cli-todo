@@ -35,7 +35,7 @@ module Todo
         end
 
         begin
-          command_parser.parse!(argv)
+          command_parser.order!(argv)
 
           # サブコマンド名
           parsed_options[:command] = argv.shift
