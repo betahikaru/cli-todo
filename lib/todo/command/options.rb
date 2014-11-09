@@ -40,7 +40,9 @@ module Todo
             parsed_options[:status] = v
           end
         end
-
+        sub_command_parsers['delete'] = OptionParser.new do |opt|
+          # no options
+        end
         # サブコマンド以外の引数を定義
         command_parser = OptionParser.new do |opt|
           opt.on_head('-v', '--version', 'Show program version') do |v|
