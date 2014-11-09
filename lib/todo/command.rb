@@ -35,7 +35,7 @@ module Todo
             find_tasks(options[:status])
         end
 
-      p tasks
+      display_tasks tasks
 
     end
 
@@ -82,6 +82,27 @@ module Todo
       else
         all_tasks
       end
+    end
+
+    # tableの内容を出力する
+    def display_tasks(tasks)
+      header = display_format('ID', 'Name', 'Content', 'Status')
+
+      puts header
+      puts '-' * header.size
+      Array(tasks).each do |task|
+        puts display_format(task.id, task.name, task.content, task.status_name)
+      end
+    end
+
+    # 1つのTaskの出力を整形する
+    def display_format(id, name, content, status)
+      [
+        id.to_s.rjust(4),
+        name.ljust(20),
+        content.ljust(38),
+        status.ljust(8)
+      ].join(' | ')
     end
 
   end

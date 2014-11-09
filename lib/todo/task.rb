@@ -25,6 +25,11 @@ module Todo
     validates :name, presence: true, length: {maximum: 140}
     validates :content, presence: true
     validates :status, numericality: true, inclusion: {in: STATUS.values}
+
+    # statusの文字列
+    def status_name
+      STATUS.key(self.status)
+    end
   end
 
 end
