@@ -24,6 +24,22 @@ module Todo
             parsed_options[:content] = v
           end
         end
+        sub_command_parsers['search'] = OptionParser.new do |opt|
+          opt.on('-s VAL', '--search=VAL', 'search status') do |v|
+            parsed_options[:status] = v
+          end
+        end
+        sub_command_parsers['update'] = OptionParser.new do |opt|
+          opt.on('-n VAL', '--name=VAL', 'update name') do |v|
+            parsed_options[:name] = v
+          end
+          opt.on('-c VAL', '--content=VAL', 'update content') do |v|
+            parsed_options[:content] = v
+          end
+          opt.on('-s VAL', '--search=VAL', 'update status') do |v|
+            parsed_options[:status] = v
+          end
+        end
 
         # サブコマンド以外の引数を定義
         command_parser = OptionParser.new do |opt|
