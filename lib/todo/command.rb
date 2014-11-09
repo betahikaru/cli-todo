@@ -19,8 +19,24 @@ module Todo
     # メイン処理
     def execute
       options  = Options.parse!(@argv)
+      sub_command = options.delete(:command)
 
       DB.prepare
+
+      tasks =
+        case sub_command
+          when 'create'
+            create_task(options[:name], options[:content])
+          when 'delete'
+            delete_task(options[:id])
+          when 'update'
+            update_task(options.delete(:id), options)
+          when 'search'
+            find_tasks(options[:status])
+        end
+
+      p tasks
+
     end
 
     # タスクの新規作成
